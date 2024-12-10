@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dan Christian Saile - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #2e2e2e, #121212); /* Dark gray gradient */
+            color: #ccc; /* Light gray text */
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            transition: background 0.3s ease;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Particle Background */
+        .particle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            animation: particleMove 4s ease-in-out infinite;
+        }
+
+        @keyframes particleMove {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(600px, 600px);
+                opacity: 0;
+            }
+        }
+
+        /* Header Styles */
+        header {
+            height: 100vh;
+            background: linear-gradient(135deg, #444, #222); /* Dark gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+        }
+
+        header h1 {
+            font-size: 4.5em;
+            font-weight: 900;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #fff;
+            animation: glowText 3s infinite alternate;
+            text-shadow: 0 0 15px #00ff99, 0 0 20px #ff006e;
+        }
+
+        header p {
+            font-size: 1.6em;
+            margin-top: 20px;
+            animation: textPulse 1.5s ease-in-out infinite;
+        }
+
+        /* Glowing Button */
+        .cta-button {
+            padding: 20px 40px;
+            font-size: 1.5em;
+            background-color: #ff006e;
+            color: #fff;
+            border-radius: 50px;
+            margin-top: 30px;
+            cursor: pointer;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 110, 0.8);
+        }
+
+        .cta-button:hover {
+            background-color: #00ff99;
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(0, 255, 153, 0.8), 0 0 100px rgba(0, 255, 153, 0.5);
+        }
+
+        /* Social Links */
+        .social-links {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 20px;
+            justify-content: center; /* Center-aligns icons horizontally */
+            align-items: center; /* Center-aligns icons vertically */
+        }
+
+        .social-links a {
+            color: #ccc; /* Gray color for icons */
+            font-size: 2.5em;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            text-shadow: 0 0 5px #ff006e, 0 0 10px #ff006e;
+        }
+
+        .social-links a:hover {
+            color: #00ff99; /* Highlight color on hover */
+            transform: scale(1.2);
+        }
+
+        .social-links i {
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover effects for Instagram and TikTok icons */
+        .social-links a.instagram:hover i {
+            transform: scale(1.2);
+            color: #e1306c; /* Instagram color */
+        }
+
+        .social-links a.tiktok:hover i {
+            transform: scale(1.2);
+            color: #69c9d0; /* TikTok color */
+        }
+
+        /* About Section */
+        .about-me {
+            padding: 80px 20px;
+            background-color: #1d1d1d; /* Slightly darker gray for about section */
+            text-align: center;
+        }
+
+        .about-me h2 {
+            font-size: 3.5em;
+            color: #ff006e;
+            text-shadow: 0 0 20px #ff006e, 0 0 30px #00ff99;
+            margin-bottom: 30px;
+            animation: glowText 3s infinite alternate;
+        }
+
+        .about-me p {
+            font-size: 1.4em;
+            color: #ccc;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 20px;
+            background-color: #1d1d1d; /* Slightly darker gray for portfolio section */
+            text-align: center;
+            position: relative;
+        }
+
+        .portfolio h2 {
+            font-size: 4em;
+            color: #ff006e;
+            text-shadow: 0 0 20px #ff006e, 0 0 30px #00ff99;
+            margin-bottom: 50px;
+            animation: glowText 3s infinite alternate;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px) rotate(5deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(50%);
+        }
+
+        .portfolio-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Footer Section */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #111;
+            color: #bbb;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #888;
+            transition: color 0.3s ease;
+        }
+
+        footer p:hover {
+            color: #ff006e;
+            cursor: pointer;
+        }
+
+        /* Keyframe Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes glowText {
+            0% { text-shadow: 0 0 10px #ff006e, 0 0 20px #ff006e, 0 0 30px #ff006e; }
+            100% { text-shadow: 0 0 30px #00ff99, 0 0 40px #00ff99, 0 0 50px #00ff99; }
+        }
+
+        @keyframes textPulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Particle Background -->
+<div class="particle">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<!-- Header Section -->
+<header>
+    <div>
+        <h1>Dan Christian Saile</h1>
+        <p>Creative Developer & Designer</p>
+        <a href="#portfolio" class="cta-button">Explore My Work</a>
+    </div>
+    <div class="social-links">
+        <a href="https://www.instagram.com/dan_sa2/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@dannnnnnn28877" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/dan.saile" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="mailto:dan.saile@example.com"><i class="fas fa-envelope"></i></a>
+    </div>
+</header>
+
+<!-- About Section -->
+<section class="about-me">
+    <h2>About Me</h2>
+    <p>Hello! I'm Dan Christian Saile, a passionate and creative developer and designer. I specialize in building innovative websites and immersive digital experiences. With a deep understanding of both design and development, I craft visually appealing and highly functional solutions to bring my clients' visions to life. I thrive on problem-solving and enjoy learning new technologies and design trends.</p>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio">
+    <h2>My Portfolio</h2>
+    <!-- Portfolio items go here -->
+</section>
+
+<!-- Footer Section -->
+<footer>
+    <p>&copy; 2024 Dan Christian Saile. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
